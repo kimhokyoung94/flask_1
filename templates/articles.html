@@ -7,8 +7,8 @@
      
       <div class="card mb-4">
         <div class="card-header">
-            <i class="fas fa-table mr-1"></i>
-            DataTable Example
+            <i class="fas fa-car mr-1"></i>
+            게시판 리스트
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -30,26 +30,26 @@
                             <th>DESCRIPTION</th>
                             <th>AUTHOR</th>
                             <th>DATE</th>
-                            <th>EDIT</th>
+                            <th>DELET</th>
                         </tr>
                     </tfoot>
                     <tbody>
                       {% for article in articles %}
                         <tr>
-                          <th scope="row">{{ article['id'] }}</th>
-                          <td><a href="/article/{{article['id']}}">{{ article['title'] }}</a></td>
-                          <td>{{ article['body'] }}</td>
-                          <td>{{ article['author'] }}</td>
-                          <td>{{ article['create_date'] }}</td>
-                          <td><button type="button" class="btn btn-danger">Edit</button></td>
+                          <th scope="row">{{ article[0] }}</th>
+                          <td><a href="/article/{{article[0]}}">{{ article[1] }}</a></td>
+                          <td>{{ article[2] }}</td>
+                          <td>{{ article[3] }}</td>
+                          <td>{{ article[4] }}</td>
+                          <td><form action="/delete/{{article[0]}}" method="POST" onsubmit="return confirm('정말 삭제하시겠습니까?')"><button type="submit" class="btn btn-danger">DELET</button></form></td>
                         </tr>
                     {% endfor %}
                       </tbody>
                     </table>
+                    <a href="/add_articles" class="btn btn-warning">새글작성</a>
                     </div>
                     </div>
                     </div>
 
-    <a class="btn btn-warning btn-lg" href="#" role="button">Learn more</a>
   </div>
 {% endblock %}

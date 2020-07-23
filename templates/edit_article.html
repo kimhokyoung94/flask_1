@@ -1,0 +1,42 @@
+{% extends "layouts.html" %}
+{% block body %}
+    <div class="jumbotron text-left">
+        <div class = "main-container">
+            <!-- horizontal Basic Forms Start -->
+            <div class="pd-20 card-box mb-30">
+                <div class="clearfix">
+                    <div class="pull-left">
+                        <h4 class="text-blue h4">Edit Your List</h4>
+                        <p class="mb-30">Input your Words</p>
+                    </div>
+                    
+                </div>
+                <form action="/article/{{data[0]}}/edit_article" method="POST" onsubmit="return confirm('이대로 편집하시겠습니까?')">
+                    <div class="form-group">
+                        <label>TITLE</label>
+                        <input class="form-control" type="text" name='title' value="{{data[1]}}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>DESCRIPTON</label>
+                        <textarea class="form-control" name="body" rows="10" required>{{ data[2]}}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>AUHOR</label>
+                        <input type="text" name='author' class="form-control" value="{{data[3]}}" required>
+                    </div>
+                    <div class="form-group">
+                        <input class="btn btn-warning btn-lg btn-block" type="submit" value="편집완료" >
+                    </div>
+                    <div class="form-group">
+                        <a class="btn btn-primary btn-lg btn-block" href="/article/{{data[0]}}"> 돌아가기</a>
+                    </div>
+                </form>
+                
+            </div>
+            
+            <!-- horizontal Basic Forms End -->
+    <hr class="my-4">
+    <a class="btn btn-warning btn-lg" href="#" role="button">Learn more</a>
+  </div>
+
+{% endblock %}
