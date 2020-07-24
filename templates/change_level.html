@@ -11,7 +11,6 @@
                             <tr>
                               <th>ID</th>
                               <th>name</th>
-                              <th>email</th>
                               <th>username</th>
                               <th>LEVEL</th>
                               <th>CHANGE</th>
@@ -21,23 +20,30 @@
                             <tr>
                                 <th>ID</th>
                                 <th>name</th>
-                                <th>email</th>
                                 <th>username</th>
                                 <th>LEVEL</th>
                                 <th>CHANGE</th>
                             </tr>
                         </tfoot>
                         <tbody>
-                            {% for users in data %}
+                          <form action="/user/{{users[0]}}" id="changeauth" method="POST">
+                            <label for="fname">Firstname:</label>
+                            <input class="btn btn-primary" type="submit">
+                          </form>
+                          <br>
+                          <label for="cars">Choose a car:</label>
+                          <select id="cars" name="auth" form="changeauth">
+                            <option value="1">관리자</option>
+                            <option value="2">일반유저</option>
+                            <option value="3">게스트</option>
+                          </select>
                           <tr>
-                            <th scope="row">{{ users[0] }}</th>
+                            <th scope="row">{{ users[0]}}</th>
                             <td>{{ users[1] }}</td>
-                            <td>{{ users[2] }}</td>
                             <td>{{ users[3] }}</td>
                             <td>{{ users[6] }}</td>
-                            <td><form action="/change_level/{{users[0]}}" method="POST" onsubmit="return confirm('정말 변경하시겠습니까?')"><button type="submit" class="btn btn-danger">CHANGE</button></form></td>
+                            <td><form action="/change_level/{{ users[0] }}" method="POST" onsubmit="return confirm('정말 변경하시겠습니까?')"><button type="submit" class="btn btn-danger">CHANGE</button></form></td>
                           </tr>
-                            {% endfor %}
                         </tbody>
                       </table>
                       <a href="/" class="btn btn-primary">돌아가기</a>
